@@ -440,7 +440,7 @@ export function requestCompanyChange(state, values) {
   if (Object.keys(proposed).every(key => proposed[key] === (state.company[key] ?? ''))) throw new Error('Реквизиты не изменены')
   const previous = state.companyChange
   state.companyChange = { status: 'pending', date: new Date().toISOString(), inn: state.company.inn,
-    ...(previous && ['returned', 'rejected'].includes(previous.status) ? { previousReason: previous.reason || 'Причина в старом демо не сохранена' } : {}),
+    ...(previous && ['returned', 'rejected'].includes(previous.status) ? { previousReason: previous.reason || 'Причина предыдущего решения не сохранена' } : {}),
     author: userContact(currentUser(state)), proposed }
 }
 
@@ -485,7 +485,7 @@ export const staffEventLabels = {
   'request-created': 'Подана заявка на присоединение',
   'request-approved': 'Заявка одобрена',
   'request-rejected': 'Заявка отклонена',
-  'invitation-created': 'Создано демо-приглашение',
+  'invitation-created': 'Приглашение создано',
   'invitation-accepted': 'Приглашение принято',
   'invitation-cancelled': 'Приглашение отменено',
   'employee-removed': 'Сотрудник удалён из компании',
@@ -588,7 +588,7 @@ function managedEmployee(state, email) {
 
 export function transferAdministration(state, email) {
   const recipient = managedEmployee(state, email)
-  if (email !== state.employee.email || !state.employeeVerified) throw new Error('Для передачи нужен присоединённый и верифицированный сотрудник демо')
+  if (email !== state.employee.email || !state.employeeVerified) throw new Error('Для передачи прав нужен присоединённый и верифицированный сотрудник')
   if (verificationReviews(state, 'employee').company.status !== 'confirmed') throw new Error('Для передачи нужна подтверждённая связь сотрудника с компанией')
   if (staffRequest(state)?.status === 'pending' || staffInvitation(state)?.status === 'pending') throw new Error('Сначала завершите ожидающее присоединение')
   const previous = userContact(administrator(state))
@@ -647,7 +647,7 @@ export function approveMembership(state, id) {
 export function inviteEmployee(state, email, hasIekId) {
   if (!canManageStaff(state)) throw new Error('Приглашать может только подтверждённый администратор')
   const request = staffRequest(state), invitation = staffInvitation(state)
-  if (employeeMember(state) || (invitation && !['removed', 'cancelled'].includes(invitation.status)) || (request && !['removed', 'rejected'].includes(request.status))) throw new Error('В демо один сотрудник. Завершите текущий сценарий; для другого пути используйте «Начать заново».')
+  if (employeeMember(state) || (invitation && !['removed', 'cancelled'].includes(invitation.status)) || (request && !['removed', 'rejected'].includes(request.status))) throw new Error('Сначала завершите текущую заявку или приглашение сотрудника.')
   if (state.members.length >= 3) throw new Error('Лимит: три сотрудника помимо администратора')
   const normalized = String(email).trim().toLowerCase()
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized) || normalized.length > 120) throw new Error('Укажите корректный email')
@@ -752,7 +752,7 @@ export function changeQuantity(state, id, value) {
 
 export function registerCompany(state, values) {
   if (state.role !== 'admin' || state.joinRequest || state.invitation) throw new Error('Создание компании недоступно в текущем сценарии присоединения')
-  if (state.stage !== 'identified') throw new Error('Сначала войдите через демо IEK ID')
+  if (state.stage !== 'identified') throw new Error('Сначала войдите через IEK ID')
   const company = Object.fromEntries(['name', 'inn', 'person', 'position', 'email', 'phone'].map(key => [key, String(values[key] ?? '').trim()]))
   if (Object.values(company).some(value => !value)) throw new Error('Заполните все поля компании')
   if (!/^(\d{10}|\d{12})$/.test(company.inn)) throw new Error('ИНН должен содержать 10 или 12 цифр')

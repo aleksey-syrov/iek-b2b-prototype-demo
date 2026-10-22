@@ -1084,7 +1084,7 @@ document.addEventListener('click', event => {
       const fromDialog = dialog.contains(target)
       startAccessReview(state, target.dataset.kind); checkout.consent = false; render(true)
       if (fromDialog) showVerification(target.dataset.kind)
-      notify(state.stage === 'identified' ? 'Заявка на проверку отправлена. Выбранная комплектация сохранена.' : 'Начата тестовая проверка выбранного пункта. Это не моделирование отзыва прав.')
+      notify(state.stage === 'identified' ? 'Заявка на проверку отправлена. Выбранная комплектация сохранена.' : 'Начата тестовая проверка выбранного пункта. Действующий доступ не отзывается.')
     }
     else if (action === 'access-result') {
       const kind = target.dataset.kind, result = target.dataset.result
