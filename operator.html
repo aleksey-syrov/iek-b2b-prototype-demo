@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Прототип рабочего места оператора IEK Digital: проверка представителя компании.">
+  <title>Заказы и верификация — IEK Digital · Оператор</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="visual-system.css?v=order-flow-24">
+  <link rel="stylesheet" href="operator.css?v=order-flow-38">
+  <script type="module" src="operator.mjs?v=order-flow-36"></script>
+</head>
+<body>
+  <a class="op-skip" href="#main">К содержимому</a>
+  <header class="op-header">
+    <div class="op-brand"><strong>IEK<span>digital</span></strong><span class="op-divider"></span><span>Рабочее место оператора</span></div>
+    <div class="op-user"><span class="op-avatar">ЕК</span><span>Елена Крылова<small>Оператор</small></span></div>
+  </header>
+  <div class="op-demo">
+    <span><b>Прототип</b> · Вымышленные данные. Решения и обмен с 1С имитируются. Изменения сохраняются в этом браузере.</span>
+    <button class="op-reset" id="reset">Сбросить демо</button>
+  </div>
+  <div id="storage-notice" class="op-storage-warning" role="alert" hidden></div>
+  <nav class="op-nav" aria-label="Разделы оператора"><a href="index.html#profile" target="_blank" rel="noopener">Личный кабинет ↗</a><a href="#requests">Верификация</a><a href="#orders">Заказы</a><a href="#inquiries">Заявки на покупку</a></nav>
+  <main id="main" class="op-main" tabindex="-1"></main>
+  <div class="op-live" role="status" aria-live="polite" id="announcement"></div>
+  <dialog id="reset-dialog" class="op-reset-dialog" aria-labelledby="reset-title" aria-describedby="reset-description">
+    <form method="dialog">
+      <h2 id="reset-title">Сбросить демо оператора?</h2>
+      <p id="reset-description">Удалятся сохранённые заметки, ответственные, решения, черновики и настройки списков заявок и заказов. Вернутся исходные примеры. Общие заявки на верификацию и на покупку из ЛК тоже удалятся. Данные магазина сохранятся, но для связанных компаний потребуется повторная отправка заявки.</p>
+      <div><button class="op-button secondary" value="cancel" autofocus>Отмена</button><button class="op-button danger" value="reset">Сбросить всё</button></div>
+    </form>
+  </dialog>
+  <noscript>Для демонстрации решений включите JavaScript.</noscript>
+</body>
+</html>
