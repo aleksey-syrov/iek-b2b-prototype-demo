@@ -1,4 +1,4 @@
-import { catalogItems, catalogSource, catalogIssues } from './catalog-data.mjs'
+import { catalogItems, catalogSource } from './catalog-data.mjs'
 export { catalogItems, catalogSource }
 
 export const kindLabels = {
@@ -31,11 +31,9 @@ export function canConfigure(item) {
 }
 
 export function catalogLimit(item) {
-  const questions = item.issues.map(id => ` ${id}: ${catalogIssues[id]}.`).join('')
-  if (item.price.kind === 'on_request') return `Цена по запросу. Отправка позиций без согласованной цены в этой итерации не моделируется.${questions}`
-  if (item.price.kind === 'free') return `Бесплатно по прайсу. Условия получения и ограничения требуют уточнения; в корзину пока не добавляем.${questions}`
-  if (item.issues.length) return `Пока только просмотр. Требует уточнения:${questions}`
-  return 'Позиция включена в справочник. Её комплектация и сценарий продажи пока не моделируются.'
+  if (item.price.kind === 'on_request') return 'Цена по запросу. Для оформления обратитесь к менеджеру.'
+  if (item.price.kind === 'free') return 'Бесплатно по прайсу. Условия получения уточняйте у менеджера.'
+  return 'Оформление этой позиции пока недоступно.'
 }
 
 function capacityText(item) {

@@ -183,7 +183,7 @@ export function loadState(storage) {
   const raw = storage.getItem(storageKey)
   if (raw === null) return initialState()
   const snapshot = JSON.parse(raw)
-  if (snapshot?.version !== 1 || !validState(snapshot.state)) throw new Error('Не удалось восстановить сохранённое демо: данные повреждены или версия не поддерживается.')
+  if (snapshot?.version !== 1 || !validState(snapshot.state)) throw new Error('Не удалось восстановить сохранённые данные: они повреждены или версия не поддерживается.')
   const state = snapshot.state
   state.verifiedEmails ??= [] // Older saves contain no evidence of email confirmation.
   state.emailChallenge ??= null

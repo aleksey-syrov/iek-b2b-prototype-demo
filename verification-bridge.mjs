@@ -49,7 +49,7 @@ export function submitLinkedCompany(storage, state, uuid = crypto.randomUUID()) 
   const registering = { ...candidate, stage:'identified', adminReviews:null }
   const values = validateCompanyConnection(registering, 3)
   if (previous && previous.inn !== values.inn) throw new Error('Для исправления заявки сохраните исходный ИНН компании')
-  if ([state.employee, ...state.members].some(person => person.email.toLowerCase() === values.email.toLowerCase())) throw new Error('Этот email уже принадлежит другому участнику демо')
+  if ([state.employee, ...state.members].some(person => person.email.toLowerCase() === values.email.toLowerCase())) throw new Error('Этот email уже принадлежит другому пользователю')
   registerCompanyFromSearch(registering, values)
   const directoryCompany = searchCompanyDirectory(values.inn).find(company => company.inn === values.inn)
   const now = new Date().toISOString()

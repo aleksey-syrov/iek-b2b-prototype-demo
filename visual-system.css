@@ -43,7 +43,7 @@ h3 { font-size: 18px; }
 .btn.secondary:hover:not(:disabled) { background: var(--surface-soft); border-color: #aab9bf; }
 .btn.dark { background: var(--dark); color: #fff; }
 .btn.dark:hover:not(:disabled) { background: #35424c; }
-.status, .hyp, .receiving-tag { border-radius: 4px; }
+.status, .receiving-tag { border-radius: 4px; }
 .field input, .field select, .field textarea, .search { border-radius: 6px; border-color: #cbd4d8; }
 .field input:hover, .field select:hover, .field textarea:hover { border-color: #98a9b1; }
 /* Focus remains visible for keyboard users without a detached blue ring. */
