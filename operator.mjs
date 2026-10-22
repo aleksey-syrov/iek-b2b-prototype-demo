@@ -2,7 +2,7 @@ import { purchaseInquiryKey, inquiryStatusLabels, loadPurchaseInquiries, current
 import { verificationBridgeKey, loadLinkedRequests, updateLinkedRequest, clearLinkedRequests } from './verification-bridge.mjs?v=public-copy-1'
 import { operatorSnapshot, loadOperatorState, saveOperatorState, clearOperatorState } from './operator-storage.mjs?v=order-flow-24'
 import { currentOperator, takeOwnership, addInternalNote, workQueue, ageLabel, nextRequestId, commentTemplates, appendTemplate } from './operator-workflow.mjs'
-import { initialState, loadDemoOrders, total, receivingGroups, deliveryCost, needsProject, searchCompanyDirectory } from './model.mjs?v=public-copy-2'
+import { initialState, loadDemoOrders, total, receivingGroups, deliveryCost, needsProject, searchCompanyDirectory } from './model.mjs?v=public-copy-3'
 import { storageKey, loadState } from './storage.mjs?v=public-copy-1'
 import { orderProgressKey, orderEventLabels, loadOrderProgress, orderWithProgress, advanceOrderProgress, saveOrderProgressWork, clearOrderProgress } from './order-progress.mjs'
 

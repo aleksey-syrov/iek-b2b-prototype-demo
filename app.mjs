@@ -9,7 +9,7 @@ import { products, initialState, access, canPurchase, contactVerified, contactsV
   submitOrder, currentUser, switchRole,
   findJoinCompany, requestMembership, approveMembership, inviteEmployee, previewInvitation, acceptInvitation, softwareOrders,
   updateEmployee, removeEmployee, rejectMembership, cancelInvitation,
-  administrator, employeeMember, canViewStaff, canManageStaff, staffDirectory, staffRequest, staffInvitation, transferAdministration, staffHistory, staffEventLabels } from './model.mjs?v=public-copy-2'
+  administrator, employeeMember, canViewStaff, canManageStaff, staffDirectory, staffRequest, staffInvitation, transferAdministration, staffHistory, staffEventLabels } from './model.mjs?v=public-copy-3'
 import { storageKey, loadState, saveState, clearState, submitSavedOrder } from './storage.mjs?v=public-copy-1'
 import { orderProgressKey, clearOrderProgress } from './order-progress.mjs'
 import { esc, dataFields, verificationStatus, checkoutFieldError, checkoutBlockers } from './presentation.mjs?v=order-flow-24'
@@ -255,7 +255,7 @@ function pilotProductPage(source, chosen) {
   return `<p class="note"><a href="#catalog">Каталог</a> / MasterSCADA 4D / ${esc(source.edition)} / ${esc(source.sku)}</p>
   <div class="real-product-layout"><div class="pilot-product-main"><section class="panel real-product-info"><header class="real-product-hero"><span class="eyebrow">MasterSCADA 4D · лицензия без права возврата</span><h2>${esc(source.product)} ${esc(source.edition)}</h2><div class="real-product-keyfacts"><div><span>Артикул ПО</span><strong class="sku">${esc(source.sku)}</strong></div><div><span>Объём</span><strong>${esc(parameterText(source))}</strong></div></div></header>
   <div class="real-product-section"><h3>Выберите лицензию</h3><label class="field">Редакция<select id="pilot-edition">${[...new Set(variants.map(option => option.edition))].map(edition => `<option value="${esc(edition)}" ${edition === source.edition ? 'selected' : ''}>${esc(edition)}</option>`).join('')}</select></label><label class="field">Количество внешних точек<select id="pilot-sku">${variants.filter(option => option.edition === source.edition).map(option => `<option value="${esc(option.sku)}" ${option.sku === source.sku ? 'selected' : ''}>${esc(parameterText(option))} · ${esc(option.sku)}</option>`).join('')}</select></label></div>
-  <div class="real-product-section"><h3>О продукте</h3><p>${esc(source.name)}</p><p class="note">Цена по прайсу 2026, без НДС.</p></div></section>
+  <div class="real-product-section"><h3>О продукте</h3><p>${esc(source.name)}</p><p class="note">Предварительная цена без НДС.</p></div></section>
   <section class="panel pilot-documents-panel" aria-labelledby="pilot-documents-title"><h3 id="pilot-documents-title">Материалы и документы</h3><div class="pilot-documents">${pilotDocuments.map(([label, url]) => `<a class="pilot-document-link" href="${url}" target="_blank" rel="noopener noreferrer"><svg class="pilot-document-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v5h4M9 12h6M9 16h6"/></svg><span>${esc(label)}</span><span class="pilot-document-arrow" aria-hidden="true">↗</span></a>`).join('')}</div></section></div>
   <section class="panel configuration-panel" data-pilot-id="${item.id}"><h2>Комплектация</h2><p class="note">Для этих лицензий нужен физический ключ защиты. Программный код для них не предлагается.</p>
   <label class="field">Будет ли использоваться виртуализация?<select id="pilot-virtual"><option value="no" ${!item.virtualized ? 'selected' : ''}>Нет</option><option value="yes" ${item.virtualized ? 'selected' : ''}>Да</option></select></label>
@@ -652,7 +652,7 @@ function lineFields(line) {
 
 function pricingNote(lines) {
   return lines.some(line => line.sourceCatalog)
-    ? 'Цены по прайсу 2026 без скидки компании. Стоимость сохранённых комплектаций может отличаться.'
+    ? 'Цены без скидки компании. Стоимость сохранённых комплектаций может отличаться.'
     : 'Стоимость этой комплектации приведена для демонстрации.'
 }
 
