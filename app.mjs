@@ -9,7 +9,7 @@ import { products, initialState, access, canPurchase, contactVerified, contactsV
   submitOrder, currentUser, switchRole,
   findJoinCompany, requestMembership, approveMembership, inviteEmployee, previewInvitation, acceptInvitation, softwareOrders,
   updateEmployee, removeEmployee, rejectMembership, cancelInvitation,
-  administrator, employeeMember, canViewStaff, canManageStaff, staffDirectory, staffRequest, staffInvitation, transferAdministration, staffHistory, staffEventLabels } from './model.mjs?v=public-copy-1'
+  administrator, employeeMember, canViewStaff, canManageStaff, staffDirectory, staffRequest, staffInvitation, transferAdministration, staffHistory, staffEventLabels } from './model.mjs?v=public-copy-2'
 import { storageKey, loadState, saveState, clearState, submitSavedOrder } from './storage.mjs?v=public-copy-1'
 import { orderProgressKey, clearOrderProgress } from './order-progress.mjs'
 import { esc, dataFields, verificationStatus, checkoutFieldError, checkoutBlockers } from './presentation.mjs?v=order-flow-24'
